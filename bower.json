@@ -1,0 +1,25 @@
+{
+  "name": "cotton",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jsilland/cotton",
+  "authors": [
+    "Julien Silland <julien@soliton.io>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "core-elements": "Polymer/core-elements#~0.3.3",
+    "paper-elements": "Polymer/paper-elements#~0.3.3",
+    "platform": "Polymer/platform#~0.3.4",
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2"
+  }
+}

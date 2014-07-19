@@ -1,0 +1,35 @@
+extends layout
+
+block head
+  link(rel='import', href='/static/paper-button/paper-button.html')
+  style.
+    body {
+      font-family: 'Helvetica Neue';
+      margin: 0;
+      padding: 24px;
+      user-select: none;
+      transform: translateZ(0);
+    }
+
+    paper-button {
+      margin: 1em;
+      width: 15em;
+    }
+
+    paper-button[raisedButton].colored {
+      background: #4285f4;
+      color: #fff;
+    }
+
+    paper-button[raisedButton].colored #ripple,
+    paper-button[raisedButton].colored::shadow #ripple {
+      color: #2a56c6;
+    }
+
+    paper-button[raisedButton].colored #focusBg,
+    paper-button[raisedButton].colored::shadow #focusBg {
+      background: #3367d6;
+    }
+
+block content
+  paper-button(class='colored', raisedButton, label='Connect with Strava')

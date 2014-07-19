@@ -1,0 +1,2 @@
+%paper-button#authenticate{class:'colored', raisedButton: true, label:'Connect with Strava'}
+%h1= "Welcome #{ @name }"
