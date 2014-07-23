@@ -18,8 +18,9 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(cookieParser())
-app.use('/static', express.static(path.join(process.cwd(), 'bower_components')))
-app.use('/assets/js', express.static(path.join(process.cwd(), 'build/client')))
+app.use('/assets', express.static(path.join(process.cwd(), 'bower_components')))
+app.use('/assets/cotton/js', express.static(path.join(process.cwd(), 'build/assets/cotton')))
+app.use('/assets/cotton/js/templates', express.static(path.join(process.cwd(), 'build/hamlc/assets/templates')))
 
 app.use('/', routes)
 
