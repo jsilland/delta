@@ -1,0 +1,22 @@
+.activity
+  .map
+    %img{src: @activity.mapUrl()}
+    .container
+      .picture
+        %img{src: @activity.get('athlete').profile}
+      .metadata
+        %h2
+          = @activity.get('name')
+        %a{href: "/athletes/#{@activity.get('athlete').id}", rel:'author'}
+          = @activity.fullAthleteName()
+        %ul.metrics
+          %li.distance
+            = @activity.get('distance')
+          %li.duration
+            = @activity.get('moving_time')
+          %li.elevation
+            = @activity.get('total_elevation_gain')
+          %li.kudos
+            = @activity.get('kudos_count')
+          %li.comments
+            = @activity.get('comment_count')

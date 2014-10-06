@@ -5,7 +5,8 @@ logger = require('morgan')
 cookieParser = require('cookie-parser')
 bodyParser = require('body-parser')
 
-routes = require('./routes/index')
+index = require('./routes/index')
+strava = require('./routes/strava')
 
 app = express()
 
@@ -20,9 +21,11 @@ app.use(bodyParser.urlencoded())
 app.use(cookieParser())
 app.use('/assets', express.static(path.join(process.cwd(), 'bower_components')))
 app.use('/assets/cotton/js', express.static(path.join(process.cwd(), 'build/assets/cotton')))
+app.use('/assets/cotton/css', express.static(path.join(process.cwd(), 'assets/cotton/css')))
 app.use('/assets/cotton/js/templates', express.static(path.join(process.cwd(), 'build/hamlc/assets/templates')))
 
-app.use('/', routes)
+app.use('/', index)
+app.use('/strava', strava)
 
 # catch 404 and forward to error handler
 app.use((req, res, next) ->

@@ -3,7 +3,10 @@ module.exports = (grunt) ->
   grunt.initConfig
     nodeunit:
       files: ['test/**/*_test.js']
-    # watch:
+    watch:
+      coffee:
+        files: ['**/*.coffee', '**/*.hamlc']
+        tasks: ['compile']
     #   gruntfile:
     #     files: '<%= jshint.gruntfile.src %>'
     #     tasks: ['jshint:gruntfile']
@@ -16,7 +19,7 @@ module.exports = (grunt) ->
     coffee:
       compile:
         expand: true
-        src: ['app.coffee', 'bin/**/*.coffee', 'routes/**/*.coffee', 'assets/**/*.coffee']
+        src: ['app.coffee', 'config/*.coffee', 'bin/**/*.coffee', 'routes/**/*.coffee', 'assets/**/*.coffee']
         dest: 'build'
         ext: '.js'
     haml:

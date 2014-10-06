@@ -1,0 +1,310 @@
+@import url(http://fonts.googleapis.com/css?family=Playball);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100);
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,700);
+
+body, html, ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+  font-family: 'Playball', cursive;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	margin: 0;
+	padding: .3em 0 .3em .5em;
+	background-color: rgb(246, 136, 39);
+	color: whitesmoke;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+#feed {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+#feed-athlete {
+  background-color: whitesmoke;
+  position: fixed;
+  min-width: 1344px;
+	left: 0;
+  bottom: 0;
+  top: 0;
+	right: 1001px;
+	overflow-y: scroll;
+	padding-top: 54px;
+}
+
+#feed-interesting {
+  background-color: rgb(46, 66, 72);
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 329px;
+  max-width: 672px;
+	overflow-y: scroll;
+	padding-top: 54px;
+}
+
+#feed-other {
+  background-color: rgb(46, 66, 72);
+  position: fixed;
+  width: 329px;
+  bottom: 0;
+  top: 0;
+  right: 0;
+	overflow-y: scroll;
+	padding-top: 54px;
+}
+
+#feed-interesting ul, #feed-athlete ul, #feed-other ul {
+  list-style-type: none;
+}
+
+#feed-athlete ul li  {
+  display: inline;
+}
+
+.athlete-activity {
+  border: 1px solid #DDD;
+  margin: 1em;
+  box-shadow: 5px 5px 12px #888;
+  max-width: 640px;
+  max-height: 480px;
+  color: #16161D;
+  position: relative;
+  float: left;
+}
+
+.athlete-container {
+  min-height: 54px;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
+.athlete-metadata {
+  padding: .2em 0 0 .5em;
+}
+
+.athlete-metadata h2 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.athlete-metadata ul.metrics {
+  font-size: .8em;
+  list-style-type: none;
+  margin: .5em 0 0 0;
+  padding: 0;
+}
+
+.athlete-metadata ul.metrics li  {
+  display: inline;
+  margin-right: .5em;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+}
+
+.athlete-metadata ul.metrics li.kudos {
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-image: url('http://cdn.flaticon.com/png/256/13804.png');
+  margin-left: 1.5em;
+  padding-left: 20px;
+}
+
+.athlete-metadata ul.metrics li.comments {
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-image: url('http://cdn.flaticon.com/png/256/12425.png');
+  margin-left: .5em;
+  padding-left: 20px;
+}
+
+.athlete-map {
+  width: 640px;
+  height: 480px;
+}
+
+.activity {
+  border: 1px solid #DDD;
+  margin: 1em;
+  max-width: 640px;
+  max-height: 284px;
+  color: #16161D;
+  position: relative;
+  float: left;
+}
+
+.container {
+  min-height: 64px;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
+.picture {
+  float: left;
+  height: 64px;
+  width: 64px;
+}
+
+.picture img {
+  height: 64px;
+  width: 64px;
+}
+
+.metadata {
+  margin-left: 64px;
+  padding: .2em 0 0 .5em;
+}
+
+.metadata h2 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.metadata a[rel="author"] {
+    font-size: .8em;
+    color: steelblue;
+    text-decoration: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+}
+
+.metadata a[rel="author"]:hover {
+    text-decoration: underline;
+}
+
+.metadata ul.metrics {
+    font-size: .8em;
+    list-style-type: none;
+    margin: .5em 0 0 0;
+    padding: 0;
+}
+
+.metadata ul.metrics li  {
+    display: inline;
+    margin-right: .5em;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+}
+
+.metadata ul.metrics li.kudos {
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-image: url('http://cdn.flaticon.com/png/256/13804.png');
+    margin-left: 1.5em;
+    padding-left: 20px;
+}
+
+.metadata ul.metrics li.comments {
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-image: url('http://cdn.flaticon.com/png/256/12425.png');
+    margin-left: .5em;
+    padding-left: 20px;
+}
+
+.map {
+    width: 640px;
+    height: 284px;
+}
+
+.little-activity {
+    border: 1px solid #DDD;
+    margin: 1em;
+    width: 295px;
+    height: 48px;
+    color: #16161D;
+}
+
+.little-container {
+    width: 297px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+.little-picture {
+    float: left;
+    height: 50px;
+    width: 50px;
+}
+
+.little-picture img {
+    height: 50px;
+    width: 50px;
+}
+
+.little-metadata {
+    margin-left: 48px;
+	max-width: 235px;
+    padding: .2em 0 0 .5em;
+}
+
+.little-metadata h2 {
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.little-metadata a[rel="author"] {
+    font-size: .8em;
+    color: black;
+    text-decoration: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+.little-metadata a[rel="author"]:hover {
+    text-decoration: underline;
+}
+
+.little-map {
+    width: 295px;
+    height: 48px;
+    background-position: center;
+}
+
+#full-screen {
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  background-color: red;
+  opacity: 0;
+}

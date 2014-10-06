@@ -15,11 +15,11 @@ _.extend(Backbone.View.prototype, {
     @$el.html(useTemplate(data))
 })
 
-Cotton.initializeTemplates = ->
+Soliton.initializeTemplates = ->
   _.templateSettings = {
     interpolate : /\{-(.+?)-\}/g,
     evaluate : /<%([\s\S]+?)%>/g,
     autoEscape : /\{\{(.+?)\}\}/g
   }
 
-Cotton.initializeTemplates()
+Soliton.initializeTemplates()
