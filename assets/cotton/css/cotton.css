@@ -1,15 +1,43 @@
-@import url(http://fonts.googleapis.com/css?family=Playball);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
 @import url(http://fonts.googleapis.com/css?family=Roboto:100);
 @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:300,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
 
 body, html, ul, li {
 	margin: 0;
 	padding: 0;
 }
 
-.logo {
-  font-family: 'Playball', cursive;
+.authenticate {
+    text-align: center;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://farm3.staticflickr.com/2944/15230712820_a17510ae9d_k.jpg');
+}
+
+.authenticate .logo {
+    font-family: 'Lobster', cursive;
+    color: white;
+    font-size: 600%;
+    margin-top: 1.5em;
+    margin-bottom: .6em;
+}
+
+.authenticate a {
+    padding: 1em;
+    color: white;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    background-color: #e91e63;
+    border-radius: .4em;
+    margin: auto;
 }
 
 h1 {

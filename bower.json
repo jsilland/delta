@@ -20,7 +20,7 @@
     "paper-elements": "Polymer/paper-elements#~0.3.3",
     "platform": "Polymer/platform#~0.3.4",
     "jquery": "~2.1.1",
-    "backbone": "~1.1.2"
+    "backbone": "~1.1.2",
     "underscore": "~1.6.0",
     "backbone.paginator": "~2.0.2"
   }
