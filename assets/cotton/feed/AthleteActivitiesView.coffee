@@ -14,6 +14,5 @@ class Soliton.Cotton.Feed.AthleteActivitiesView extends Backbone.View
   openActivity: (event) ->
     target = jQuery(event.target)
     activityId = target.closest('li').attr('id').substring(9)
-    activityDiv = target.closest('.athlete-activity')
-    activityDiv.addClass('full-screen')
-    #new Soliton.Cotton.Activity.FullScreenActivityController(activityId)
+    activityId = parseInt(activityId)
+    new Soliton.Cotton.Activity.FullScreenActivityController(activityId)

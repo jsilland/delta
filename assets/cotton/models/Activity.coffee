@@ -3,7 +3,7 @@ Soliton.module 'Soliton.Cotton.Models'
 class Soliton.Cotton.Models.Activity extends Backbone.Model
   
   url: ->
-    "/strava/activity/#{@id}"
+    "/strava/activities/#{@id}"
   
   fullAthleteName: ->
     "#{@get('athlete').firstname} #{@get('athlete').lastname}"

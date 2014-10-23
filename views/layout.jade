@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     link(rel='stylesheet' href='/assets/cotton/css/cotton.css')
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmfR2XMO4sljkBUtkxrE3aizEn9AL39zw')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmfR2XMO4sljkBUtkxrE3aizEn9AL39zw&libraries=geometry')
     script(src='/assets/platform/platform.js')
     script(src='/assets/jquery/dist/jquery.min.js')
     script(src='/assets/underscore/underscore.js ')
@@ -11,7 +11,10 @@ html
     script(src='/assets/backbone.paginator/lib/backbone.paginator.min.js')
     script(src='/assets/cotton/js/Module.js')
     script(src='/assets/cotton/js/Core.js')
+    script(src='/assets/cotton/js/fullscreen/FullScreenView.js')
+    script(src='/assets/cotton/js/templates/fullscreen/splash.js')
     title= title
     block head
   body
     block content
+    div(id='full-screen')

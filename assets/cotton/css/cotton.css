@@ -42,10 +42,10 @@ body, html, ul, li {
 
 h1 {
   font-family: 'Roboto', sans-serif;
-	font-weight: 300;
+	font-weight: 100;
 	margin: 0;
 	padding: .3em 0 .3em .5em;
-	background-color: rgb(246, 136, 39);
+	background-color: #ff9800;
 	color: whitesmoke;
 	position: fixed;
 	top: 0;
@@ -76,7 +76,7 @@ h1 {
 }
 
 #feed-interesting {
-  background-color: rgb(46, 66, 72);
+  background-color: #004d40;
   position: fixed;
   bottom: 0;
   top: 0;
@@ -87,7 +87,7 @@ h1 {
 }
 
 #feed-other {
-  background-color: rgb(46, 66, 72);
+  background-color: #004d40;
   position: fixed;
   width: 329px;
   bottom: 0;
@@ -326,13 +326,24 @@ h1 {
 }
 
 #full-screen {
-  position: fixed;
-  margin: 0;
-  top: 0;
+  text-align: center;
+  height: 100%;
+  width: 100%;
   left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 5;
-  background-color: red;
-  opacity: 0;
+  position: absolute;
+  top: 0;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+
+#full-screen .logo {
+  font-family: 'Lobster', cursive;
+  color: white;
+  font-size: 600%;
+  margin-top: 1.5em;
+  margin-bottom: .6em;
+}
+
+.activity-details h1 {
+  text-align: left;
 }

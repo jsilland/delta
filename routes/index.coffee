@@ -16,4 +16,15 @@ router.get('/feed', (req, res) ->
     res.render('index', {title: 'Cotton - Home'})
 );
 
+router.get('/activities/:id', (req, res) ->
+  if req.cookies.strava_access_token
+    res.render('activity', {
+      title: 'Cotton - Activity',
+      google_maps_api_key: config.google.maps.api_key,
+      activity_id: req.params.id
+    })
+  else
+    res.render('index', {title: 'Cotton - Home'})
+);
+
 module.exports = router

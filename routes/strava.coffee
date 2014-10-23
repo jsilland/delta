@@ -16,6 +16,7 @@ router.get('/exchange', (req, res) ->
       'client_secret': config.strava.api.client_secret
       'code': req.query.code
     (error, response, body) ->
+      console.log("Access token exchanged: #{JSON.parse(body).access_token}")
       res.cookie('strava_access_token', JSON.parse(body).access_token, path: '/')
       res.redirect('/feed')
   )
@@ -30,7 +31,7 @@ router.get('/*', (req, res) ->
     if !!params.length
       query = "?#{params.join('&')}"
     url = "https://www.strava.com/api/v3#{req.path}#{query}"
-    console.log("Forwarding Strava API request: #{url}")
+    console.log("Forwarding Strava API request: #{url}, token: #{req.cookies.strava_access_token}}")
     request.get(url,
       headers:
         'Authorization': "Bearer #{req.cookies.strava_access_token}"
