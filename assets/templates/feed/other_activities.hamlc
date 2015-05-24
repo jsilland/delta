@@ -1,5 +1,0 @@
-%h1
-  = @header
-%ul
-  - for activity, index in @activities.models.filter((activity) -> !activity.isInteresting())
-    %li{id: "activity_#{activity.get('id')}"}

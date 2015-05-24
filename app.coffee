@@ -1,11 +1,11 @@
 express = require('express')
 path = require('path')
-favicon = require('static-favicon')
 logger = require('morgan')
 cookieParser = require('cookie-parser')
 bodyParser = require('body-parser')
 
-index = require('./routes/index')
+connect = require('./routes/connect')
+record = require('./routes/record')
 strava = require('./routes/strava')
 
 app = express()
@@ -14,17 +14,21 @@ app = express()
 app.set('views', path.join(process.cwd(), 'views'))
 app.set('view engine', 'jade')
 
-app.use(favicon())
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(cookieParser())
 app.use('/assets', express.static(path.join(process.cwd(), 'bower_components')))
-app.use('/assets/cotton/js', express.static(path.join(process.cwd(), 'build/assets/cotton')))
-app.use('/assets/cotton/css', express.static(path.join(process.cwd(), 'assets/cotton/css')))
-app.use('/assets/cotton/js/templates', express.static(path.join(process.cwd(), 'build/hamlc/assets/templates')))
-
-app.use('/', index)
+app.use('/assets', express.static(path.join(process.cwd(), 'build/assets')))
+app.use('/connect', connect)
+# app.use(
+#   (req, res, next) ->
+#     if !req.cookies.strava_access_token
+#       res.redirect("/connect?redirect=#{encodeURIComponent(req.originalUrl)}")
+#     else
+#       next()
+# )
+app.use('/record', record)
 app.use('/strava', strava)
 
 # catch 404 and forward to error handler

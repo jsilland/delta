@@ -1,0 +1,11 @@
+extends layout
+
+block head
+  link(rel='import' href='/assets/components/strava-connect-button/strava-connect-button.html')
+  link(rel='import' href='/assets/components/strava-full-screen-view/strava-full-screen-view.html')
+  link(rel='import' href='/assets/components/strava-splash/strava-splash.html')
+
+block content
+  strava-full-screen-view
+    strava-splash(photo=photo)
+      strava-connect-button(clientid=clientId host=host redirect=redirect style="position: absolute; top: 70%; left: calc(50% - 250px);")

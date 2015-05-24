@@ -2,25 +2,8 @@ express = require('express')
 httpProxy = require('http-proxy')
 http = require('http')
 request = require('request')
-config = require('../config/strava')
 
 router = express.Router()
-
-router.get('/exchange', (req, res) ->
-  if req.query.error
-    res.render('authenticate', {title: 'Authenticate'})
-    return
-  request.post('https://www.strava.com/oauth/token',
-    form:
-      'client_id': config.strava.api.client_id
-      'client_secret': config.strava.api.client_secret
-      'code': req.query.code
-    (error, response, body) ->
-      console.log("Access token exchanged: #{JSON.parse(body).access_token}")
-      res.cookie('strava_access_token', JSON.parse(body).access_token, path: '/')
-      res.redirect('/feed')
-  )
-)
 
 router.get('/*', (req, res) ->
   if req.cookies.strava_access_token

@@ -1,0 +1,3 @@
+[submodule "assets/fonts/sanfrancisco"]
+	path = assets/fonts/sanfrancisco
+	url = git@github.com:supermarin/YosemiteSanFranciscoFont.git

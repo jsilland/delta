@@ -1,0 +1,7 @@
+extends layout
+
+block head
+  link(rel='import' href='/assets/components/strava-record-screen/strava-record-screen.html')
+
+block content
+  strava-record-screen(googleMapsApiKey=google_maps_api_key)

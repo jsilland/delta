@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'San Francisco';
+  src: url('/assets/fonts/sanfrancisco/System San Francisco Display Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: url('/assets/fonts/sanfrancisco/System San Francisco Display Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: url('/assets/fonts/sanfrancisco/System San Francisco Display Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: url('/assets/fonts/sanfrancisco/System San Francisco Display Thin.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  src: url('/assets/fonts/sanfrancisco/System San Francisco Display Ultralight.ttf');
+  font-weight: 100;
+}
+
+body {
+  font-family: 'San Francisco', sans-serif;
+}

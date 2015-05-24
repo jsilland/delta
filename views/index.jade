@@ -1,9 +1,0 @@
-extends layout
-
-block head
-  script(src='/assets/cotton/js/authenticate/AuthenticateView.js')
-  script(src='/assets/cotton/js/templates/authenticate/authenticate.js')
-  script.
-    jQuery(document).ready(function() {
-      new Soliton.Cotton.Authenticate.AuthenticateView().render();
-    })

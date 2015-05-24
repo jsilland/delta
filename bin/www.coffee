@@ -1,4 +1,4 @@
-debug = require('debug')('cotton')
+debug = require('debug')('delta')
 app = require('../app')
 
 app.set('port', process.env.PORT || 1337)

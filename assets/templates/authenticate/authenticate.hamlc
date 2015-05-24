@@ -1,5 +1,0 @@
-%div{class: 'authenticate'}
-  %div{class: 'logo'}
-    Cotton
-  %a{id: 'authenticate'}
-    CONNECT WITH STRAVA

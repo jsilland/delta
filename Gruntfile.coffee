@@ -5,34 +5,35 @@ module.exports = (grunt) ->
       files: ['test/**/*_test.js']
     watch:
       coffee:
-        files: ['**/*.coffee', '**/*.hamlc']
+        files: ['**/*.coffee']
         tasks: ['compile']
-    #   gruntfile:
-    #     files: '<%= jshint.gruntfile.src %>'
-    #     tasks: ['jshint:gruntfile']
-    #   lib:
-    #     files: '<%= jshint.lib.src %>'
-    #     tasks: ['jshint:lib', 'nodeunit']
-    #   test:
-    #     files: '<%= jshint.test.src %>'
-    #     tasks: ['jshint:test', 'nodeunit']
     coffee:
       compile:
         expand: true
         src: ['app.coffee', 'config/*.coffee', 'bin/**/*.coffee', 'routes/**/*.coffee', 'assets/**/*.coffee']
         dest: 'build'
         ext: '.js'
-    haml:
-      compile:
-        options:
-          language: 'coffee'
-          target: 'js'
-          pathRelativeTo: 'assets/'
-          includePath: true
-        files: grunt.file.expandMapping(['assets/templates/**/*.hamlc'], 'build/hamlc/',
-          rename: (base, path) -> 
-            return base + path.replace(/\.hamlc$/, '.js');
-        )
+    copy:
+      components:
+        files: [
+          {expand: true, src: ['assets/components/**/*.html'], dest: 'build/', filter: 'isFile'}
+        ]
+      images:
+        files: [
+          {expand: true, src: ['assets/images/**/*'], dest: 'build/', filter: 'isFile'}
+        ]
+      styles:
+        files: [
+          {expand: true, src: ['assets/css/*'], dest: 'build/', filter: 'isFile'}
+        ]
+      fonts:
+        files: [
+          {expand: true, src: ['assets/fonts/**/*.ttf'], dest: 'build/', filter: 'isFile'}
+        ]
+      manifest:
+        files: [
+          {expand: false, src: ['assets/manifest.json'], dest: 'build/'}
+        ]       
     execute:
       cotton:
         src: ['build/bin/www.js']
@@ -41,13 +42,13 @@ module.exports = (grunt) ->
         src: ['build']
 
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-contrib-coffee')
+  grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-nodeunit')
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-execute')
-  grunt.loadNpmTasks('grunt-haml')
   grunt.loadNpmTasks('grunt-run')
 
   grunt.registerTask('default', ['nodeunit'])
-  grunt.registerTask('compile', ['haml', 'coffee'])
-  grunt.registerTask('run', ['compile', 'execute'])
+  grunt.registerTask('build', ['coffee:compile', 'copy'])
+  grunt.registerTask('run', ['build', 'execute'])

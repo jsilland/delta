@@ -1,0 +1,92 @@
+In the past two years, there has been an *enormous* amount of time and energy spent developing and implementing open web specifications – platform features
+The obvious goal is to bring the web platform to parity with native platforms, with the intent of blurring the lines
+Chrome will soon run Android apps, and web apps are becoming richer – there's a path to convergence. I'm convinced Google will eventually make Javascript a first class language on Android.
+This effort is especially sponsored by Google, as part of the Blink rendering engine, but also by Mozilla and Microsoft. Apple's lagging behind – they don't care much.
+
+Web Components & Polymer
+  - lets you create valid, custom HTML elements, e.g. <strava-activity>, <strava-record-button>
+  - Each element maps to an instance of a JavaScript class, i.e. <strava-record-button> <-> StravaRecordButton
+  - Attributes maps to object properties, i.e <strava-segment id="12345"> -> StravaSegment.id = 12345
+  - Lifecycle callbacks: created, ready, attached, detached:
+     StravaAthlete.ready: ->
+       @athlete = fetchAthlete(@id)
+  - Data binding and templating:
+     // in strava-athlete.html
+     <template>
+       <strava-avatar url="{{athlete.avatar}}">
+     </template>
+     // in strava-avatar.html
+     <style> img { border-radius: 50%; }</style>
+     <template>
+       <img src="{{url}}">
+     </template>
+
+Ready-made elements to display UI widgets (e.g. Google Maps) but also to perform tasks such as AJAX queries.
+
+Geo Location API
+  - Ever been annoyed by those websites asking for your location?
+  - This API is mostly useless on desktop
+  - It shines on mobile, especially for Strava's needs
+
+  @watchId = navigator.geolocation.watchPosition(
+        (position) => @updatePosition(position),
+        (error) => @positionUpdateError(error),
+        {enableHighAccuracy: true, timeout: 5000, maximumAge: 0}
+    )
+
+Bluetooth API
+  - Unfortunately didn't get to it to work with an HRM
+
+Wake Lock API
+
+Screen orientation API
+  screen.orientation.lock('portrait-primary')
+
+Image Selection API
+  - As simple as
+  <input type="file" accept="image/*" multiple>
+  - The host browser is responsible for handling the event
+
+Speech Synthesis API
+
+  - Literraly speaks for itself
+speechSynthesis.speak(new SpeechSynthesisUtterance('Segment Rocket Mile 6 minutes 43 seconds'))
+
+Application Manifest API
+  - Lets your web app be installed on the launch screen
+  - Declared as JSON
+
+{
+  "name": "Strava Record",
+  "icons": [
+    {
+      "src": "/assets/images/manifest/launcher-icon-4x.png",
+      "sizes": "224x224",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/record",
+  "display": "standalone",
+  "orientation": "portrait"
+}
+
+  - published in the document's head
+<head>
+<link rel='manifest' href='/assets/manifest.json'>
+</head>
+
+Service workers
+  - Makes web application work offline
+  - Lets you bundle an application as a set of resources
+    - Javascript, HTML, assets of any kind
+  - Creates a proxy between an application and the network
+  - Provides robust caching of resources
+
+Chrome inspecting and remote debugging tools
+  - Simply spectacular
+  - Connect an Android phone, enable debugging, go to chrome://inspect
+  - Implements port forwarding
+  - Supports proxying (for external libraries)
+  - Inspect remote webviews on your desktop machine – the same way you normally would
+  
+

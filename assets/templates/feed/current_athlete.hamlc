@@ -1,2 +1,0 @@
-%div
-  = @athlete.get('firstname')

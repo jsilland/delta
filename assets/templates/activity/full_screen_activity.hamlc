@@ -1,3 +1,0 @@
-.activity-details
-  %h1
-    = @activity.get('name')

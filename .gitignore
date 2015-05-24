@@ -1,4 +1,6 @@
+**/.DS_Store
+**/*.swp
 bower_components
 build
 node_modules
-config/strava.coffee
+config/strava_api.coffee

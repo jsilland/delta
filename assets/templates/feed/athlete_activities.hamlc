@@ -1,5 +1,0 @@
-%h1
-  = @header
-%ul
-  - for activity, index in @activities.models
-    %li{id: "activity_#{activity.get('id')}"}

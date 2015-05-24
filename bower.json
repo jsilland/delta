@@ -1,7 +1,7 @@
 {
-  "name": "cotton",
+  "name": "delta",
   "version": "0.0.0",
-  "homepage": "https://github.com/jsilland/cotton",
+  "homepage": "https://github.com/jsilland/delta",
   "authors": [
     "Julien Silland <julien@soliton.io>"
   ],
@@ -15,14 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.3.4",
-    "core-elements": "Polymer/core-elements#~0.3.3",
-    "paper-elements": "Polymer/paper-elements#~0.3.3",
-    "platform": "Polymer/platform#~0.3.4",
-    "jquery": "~2.1.1",
-    "backbone": "~1.1.2",
-    "underscore": "~1.6.0",
-    "backbone.paginator": "~2.0.2",
-    "material-design-icons": "~1.0.0"
+    "polymer": "Polymer/polymer#^0.9.0",
+    "material-design-icons": "~1.0.0",
+    "google-map": "GoogleWebComponents/google-map#0.8-preview",
+    "pure": "~0.6.0"
   }
 }
