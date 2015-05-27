@@ -1,27 +1,52 @@
-# cotton [![Build Status](https://secure.travis-ci.org/jsilland/cotton.png?branch=master)](http://travis-ci.org/jsilland/cotton)
+# Peregrine
 
-The best project ever.
+Peregrine is a modern, mobile-friendly web application for Strava.
 
-## Getting Started
-Install the module with: `npm install cotton`
+## Installation
 
-```javascript
-var cotton = require('cotton');
-cotton.awesome(); // "awesome"
+Peregrine uses Node, Bower and Grunt as a development toolchain – make sure you have them installed on your system:
+
+```sh
+brew install node
+npm install -g bower
+npm install grunt
 ```
 
-## Documentation
-_(Coming soon)_
+After cloning this repository, run
 
-## Examples
-_(Coming soon)_
+```sh
+git submodule update
+git submodule pull
+bower install
+npm install
+```
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+## Provisioning a Strava API key
 
-## Release History
-_(Nothing yet)_
+Provision an application from [Strava's developers website](https://www.strava.com/developers). Once you have a client identifier and a secret, you need to set it in the configuration: `config/strava_api.coffee`:
+
+```coffee
+STRAVA_API = strava_api:
+  client_id: <your_client_id>
+  client_secret: <your_client_secret>
+
+module.exports = STRAVA_API
+```
+
+## Provisioning a Google Maps key
+
+The key shipping in the code will work for moderate amounts of traffic coming from `localhost`. If you intend to deploy Peregrine in a real user-facing environment, you will need to provision your own key and configure it in `config/google_maps.coffee`
+
+## Running
+
+Invoking the following command compiles all the CoffeeScript code and copies all the assets in the expected directory, then boots a Node server.
+
+```sh
+grunt run
+```
+
+Use `grunt --help` or inspect the `Gruntfile` to find other commands.
 
 ## License
-Copyright (c) 2014 Julien Silland  
+Copyright (c) 2015 Julien Silland  
 Licensed under the MIT license.
