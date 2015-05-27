@@ -1,0 +1,24 @@
+<dom-module id="strava-finish-button">
+  <style>
+    #finish-button {
+      color: white;
+      background: #FC4C02;
+      font-size: 30px;
+      padding: 0;
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    #finish-flag {
+      vertical-align: middle;
+      max-height: 75px;
+    }
+  </style>
+  <template>
+	  <button id="finish-button" type="button" class="pure-button button-xlarge button-strava-finish">
+      <img src="/assets/images/record/finish.png" id="finish-flag"> Finish Activity
+    </button>
+  </template>
+</dom-module>
+
+<script src="StravaFinishButton.js"></script>

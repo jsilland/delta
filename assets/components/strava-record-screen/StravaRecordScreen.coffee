@@ -88,6 +88,7 @@ StravaRecordScreen = Polymer({
   
   recordingChanged: (newValue) ->
     if newValue
+      @$['finish-button'].setAttribute('enabled', 'true')
       @recordingTimer = setInterval(
           => @updateTime(),
           500

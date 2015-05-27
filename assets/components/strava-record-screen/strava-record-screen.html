@@ -1,4 +1,5 @@
 <link rel='import' href='/assets/components/strava-distance-label/strava-distance-label.html'>
+<link rel='import' href='/assets/components/strava-finish-button/strava-finish-button.html'>
 <link rel='import' href='/assets/components/strava-full-screen-view/strava-full-screen-view.html'>
 <link rel='import' href='/assets/components/strava-lap-button/strava-lap-button.html'>
 <link rel='import' href='/assets/components/strava-photo-button/strava-photo-button.html'>
@@ -11,6 +12,14 @@
   <style>
     google-map {
       height: calc(100% - 650px);
+    }
+    
+    strava-finish-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      left: 20px;
+      height: 70px;
     }
     
     #record {
@@ -73,11 +82,12 @@
             icon="/assets/images/record/map_marker.png">
         </google-map-marker>
       </google-map>
+      <strava-finish-button id="finish-button"></strava-finish-button>
       <div id="record">
         <ul id="metric-labels">
-          <li id="time-label"><strava-time-label elapsedtime="4567"></strava-time-label></li>
-          <li id="speed-label"><strava-speed-label speed="11.17"></strava-speed-label></li>
-          <li id="distance-label"><strava-distance-label distance="120.4"></strava-distance-label></li>
+          <li id="time-label"><strava-time-label elapsedtime="{{elapsedtime}}"></strava-time-label></li>
+          <li id="speed-label"><strava-speed-label speed="{{speed}}"></strava-speed-label></li>
+          <li id="distance-label"><strava-distance-label distance="{{distance}}"></strava-distance-label></li>
         </ul>
         <strava-lap-button enabled="{{recording}}" current-position="{{lastKnownPosition}}"></strava-lap-button>
         <strava-record-button recording={{recording}} enabled="{{readytorecord}}"></strava-record-button>

@@ -5,6 +5,7 @@ StravaTimeLabel = Polymer({
 		elapsedtime:
       type: Number
       notify: true
+      value: 0
       observer: 'timeChanged'
     formattedTime: String
 
