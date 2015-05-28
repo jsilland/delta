@@ -11,15 +11,6 @@ StravaConnectButton = Polymer({
 
   ready: ->
     @$['connect-button'].addEventListener('click', => @authenticate())
-
-  attached: ->
-    console.log(@localName + '#' + @id + ' was attached')
-
-  detached: ->
-    console.log(@localName + '#' + @id + ' was detached')
-
-  attributeChanged: (name, type) ->
-    console.log(@localName + '#' + @id + ' attribute ' + name + ' was changed to ' + @getAttribute(name))
     
   authenticate: ->
     exchangeUrl = encodeURIComponent("#{@host}/connect/exchange")

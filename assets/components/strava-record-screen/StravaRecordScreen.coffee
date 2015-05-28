@@ -66,15 +66,15 @@ StravaRecordScreen = Polymer({
 	ready: ->
     @recordedPositions = []
     @buffer = []
-    mapElement = document.querySelector('google-map')
+    @mapElement = document.querySelector('google-map')
     @mapMarker = document.querySelector('google-map-marker')
-    mapElement.addEventListener('google-map-ready',
+    @mapElement.addEventListener('google-map-ready',
       (event) =>
-        @map = mapElement.map
+        @map = @mapElement.map
         @polyline = new google.maps.Polyline(
           strokeColor: '#346CF1'
           strokeOpacity: 1.0
-          strokeWeight: 8)
+          strokeWeight: 25)
         @polyline.setMap(@map)
         @startWatchingPosition()
     )
@@ -91,13 +91,13 @@ StravaRecordScreen = Polymer({
       @$['finish-button'].setAttribute('enabled', 'true')
       @recordingTimer = setInterval(
           => @updateTime(),
-          500
+          1000
       )
     else
       clearInterval(@recordingTimer)
   
   updateTime: ->
-    @elapsedtime += .5
+    @elapsedtime += 1
   
   detached: ->
     navigator.geolocation.clearWatch(@watchId)  
@@ -115,10 +115,11 @@ StravaRecordScreen = Polymer({
       @updatePolyline(position)
   
   updateMap: (position) ->
-    @map.latitude = position.coords.latitude
-    @map.longitude = position.coords.longitude
     @mapMarker.latitude = position.coords.latitude
     @mapMarker.longitude = position.coords.longitude
+    if @recording || !@map.getBounds().contains(@mapMarker.marker.getPosition())
+      @mapElement.latitude = position.coords.latitude
+      @mapElement.longitude = position.coords.longitude
     
   updatePolyline: (position) ->
     @polyline.getPath().push(
@@ -127,32 +128,34 @@ StravaRecordScreen = Polymer({
   updateBuffer: (position) ->
     @buffer.push(position)
     if @buffer.length > 4
-      @buffer.shift
+      @buffer.shift()
     @speed = position.coords.speed
     @updateReadyToRecord()
 
   updateDistance: ->
     lastTwoPositions = @buffer.slice(-2)
-    @distance += @distanceBetween(lastTwoPoints[0].coords, lastTwoPoints[1].coords)
+    @distance += @distanceBetween(lastTwoPositions[0].coords, lastTwoPositions[1].coords)
 
   distanceBetween: (first, second) ->
     earthRadius = 6371
     latitudeDifference = @toRadians(second.latitude - first.latitude)
-    longitudeDifferece = @toRadians(second.longitude - first.longitude) 
+    longitudeDifference = @toRadians(second.longitude - first.longitude) 
     a = Math.sin(latitudeDifference / 2) * Math.sin(latitudeDifference / 2) +
         Math.cos(@toRadians(first.latitude)) * Math.cos(@toRadians(second.latitude)) * 
-        Math.sin(longitudeDifferece / 2) * Math.sin(longitudeDifference / 2)
+        Math.sin(longitudeDifference / 2) * Math.sin(longitudeDifference / 2)
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     earthRadius * c
   
   toRadians: (degrees) ->
     degrees * (Math.PI / 180)
-    
+
+  MINIMAL_REQUIRED_ACCURACY: 20
+
   updateReadyToRecord: ->
-    if !@recording && @buffer.length > 4
+    if !@recording && @buffer.length >= 4
       found = @buffer.some(
-        (position) ->
-          position.coords.accuracy > 5
+        (position) =>
+          position.coords.accuracy > @MINIMAL_REQUIRED_ACCURACY
       )
       @readytorecord = !found
 })

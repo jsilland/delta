@@ -7,10 +7,9 @@ StravaRecordButton = Polymer({
       observer: 'enabledChanged'
     recording:
       type: Boolean
+      value: false
+      notify: true
       observer: 'recordingChanged'
-
-  created: ->
-    console.log(@localName + '#' + @id + ' was created')
 
   ready: ->
     @$['record-button'].addEventListener('click', => @recordButtonClicked())

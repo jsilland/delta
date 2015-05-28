@@ -47,6 +47,12 @@ grunt run
 
 Use `grunt --help` or inspect the `Gruntfile` to find other commands.
 
+## Endpoints
+
+- `/connect`: login screen — prompts the user to authorize the application to access the Strava API
+- `/record`: record screen
+- `/strava/*`: forwards a request to the Strava API, e.g. `GET /strava/athletes/136697` will return the data about that particular athlete.
+
 ## License
 Copyright (c) 2015 Julien Silland  
 Licensed under the MIT license.
