@@ -155,7 +155,7 @@ StravaRecordScreen = Polymer({
   toRadians: (degrees) ->
     degrees * (Math.PI / 180)
 
-  MINIMAL_REQUIRED_ACCURACY: 20
+  MINIMAL_REQUIRED_ACCURACY: 25
 
   updateReadyToRecord: ->
     if !@recording && @buffer.length >= 4

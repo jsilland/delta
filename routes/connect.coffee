@@ -15,7 +15,7 @@ router.get('/', (req, res) ->
     clientId: config.strava_api.client_id,
     host: 'http://localhost:1337',
     redirect: redirect,
-    photo: '/assets/images/splash/road.jpg'
+    photos: JSON.stringify(['/assets/images/splash/road.jpg', '/assets/images/splash/bridge.jpg', '/assets/images/splash/forest.jpg', '/assets/images/splash/mountain.jpg', '/assets/images/splash/plain.jpg', '/assets/images/splash/runner.jpg'])
     }
   )  
 )
@@ -27,7 +27,7 @@ router.get('/exchange', (req, res) ->
       clientId: config.strava_api.client_id,
       host: 'http://localhost:1337',
       redirect: req.query.state,
-      photo: '/assets/images/splash/road.jpg'
+      photos: JSON.stringify(['/assets/images/splash/road.jpg', '/assets/images/splash/bridge.jpg', '/assets/images/splash/forest.jpg', '/assets/images/splash/mountain.jpg', '/assets/images/splash/plain.jpg', '/assets/images/splash/runner.jpg'])
     })
     return
   request.post('https://www.strava.com/oauth/token',

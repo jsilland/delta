@@ -2,8 +2,9 @@ StravaSplash = Polymer({
   is: 'strava-splash'
 	
 	properties:
-		photo: String
+		photos: Array
 
 	ready: ->
-    @$.background.style.backgroundImage = "url('#{@photo}')"
+    photo = @photos[Math.floor(Math.random() * @photos.length)]
+    @$.background.style.backgroundImage = "url('#{photo}')"
 })
