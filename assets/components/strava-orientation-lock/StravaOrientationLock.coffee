@@ -5,6 +5,6 @@ StravaOrientationLock = Polymer({
 		orientation: String
 
 	ready: ->
-    if screen.orientation.lock
+    if screen.orientation && screen.orientation.lock
       screen.orientation.lock(@orientation)
 })

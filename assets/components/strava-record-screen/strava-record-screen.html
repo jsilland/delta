@@ -70,8 +70,6 @@
   <template>
     <strava-full-screen-view>
       <google-map
-          latitude="37.77493"
-          longitude="-122.41942"
           zoomable="false"
           api-key="AIzaSyCmfR2XMO4sljkBUtkxrE3aizEn9AL39zw"
           zoom='18'
@@ -79,8 +77,8 @@
           additional-map-options="{{googleMapOptions}}">
         <google-map-marker
             draggable="false"
-            latitude="37.779"
-            longitude="-122.3892"
+            latitude="{{markerlatitude}}"
+            longitude="{{markerlongitude}}"
             icon="/assets/images/record/map_marker.png">
         </google-map-marker>
       </google-map>

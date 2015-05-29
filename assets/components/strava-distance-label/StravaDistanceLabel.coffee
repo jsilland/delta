@@ -9,6 +9,6 @@ StravaDistanceLabel = Polymer({
     formattedDistance: String
 
 	distanceChanged: (newValue) ->
-    if newValue?
+    if newValue? && newValue != NaN
       @formattedDistance = newValue.toFixed(1)
 })

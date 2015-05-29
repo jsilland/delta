@@ -24,6 +24,12 @@ StravaRecordScreen = Polymer({
       type: Object
       value: ->
         {}
+    markerlatitude:
+      type: Number
+      value: 37.77493
+    markerlongitude:
+      type: Number
+      value: -122.41942
     googleMapOptions:
       type: Object
       value: ->
@@ -115,11 +121,11 @@ StravaRecordScreen = Polymer({
       @updatePolyline(position)
   
   updateMap: (position) ->
-    @mapMarker.latitude = position.coords.latitude
-    @mapMarker.longitude = position.coords.longitude
-    if @recording || !@map.getBounds().contains(@mapMarker.marker.getPosition())
-      @mapElement.latitude = position.coords.latitude
-      @mapElement.longitude = position.coords.longitude
+    mapsPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+    @mapMarker.marker.setPosition(mapsPosition)
+    if @recording || (@map.getBounds()? && !@map.getBounds().contains(@mapMarker.marker.getPosition()))
+      @map.setCenter(@mapMarker.marker.getPosition())
+      @map.panTo(@map.getCenter())
     
   updatePolyline: (position) ->
     @polyline.getPath().push(

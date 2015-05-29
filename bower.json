@@ -18,6 +18,7 @@
     "polymer": "1.0.0",
     "material-design-icons": "~1.0.0",
     "google-map": "1.0.0",
-    "pure": "~0.6.0"
+    "pure": "~0.6.0",
+    "webcomponentsjs": "~0.7.2"
   }
 }
