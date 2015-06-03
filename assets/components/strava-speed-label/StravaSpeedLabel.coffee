@@ -1,14 +1,14 @@
 StravaTimeLabel = Polymer({
   is: 'strava-speed-label'
 	
-	properties:
-		speed:
+  properties:
+    speed:
       type: Number
       notify: true
       observer: 'speedChanged'
     formattedSpeed: String
 
-	speedChanged: (newValue) ->
+  speedChanged: (newValue) ->
     if newValue? && newValue != NaN
       @formattedSpeed = (newValue * 3.6).toFixed(1)
 })
