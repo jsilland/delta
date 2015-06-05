@@ -35,7 +35,7 @@ module.exports = (grunt) ->
           {expand: false, src: ['assets/manifest.json'], dest: 'build/'}
         ]       
     execute:
-      cotton:
+      peregrine:
         src: ['build/bin/www.js']
     clean:
       build:
