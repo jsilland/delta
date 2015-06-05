@@ -1,4 +1,4 @@
-debug = require('debug')('delta')
+debug = require('debug')('peregrine')
 app = require('../app')
 
 app.set('port', process.env.PORT || 1337)
