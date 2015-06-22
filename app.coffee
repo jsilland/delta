@@ -3,6 +3,7 @@ path = require('path')
 logger = require('morgan')
 cookieParser = require('cookie-parser')
 bodyParser = require('body-parser')
+multer = require('multer')
 
 connect = require('./routes/connect')
 record = require('./routes/record')
@@ -14,21 +15,23 @@ app = express()
 app.set('views', path.join(process.cwd(), 'views'))
 app.set('view engine', 'jade')
 
+# routes
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+app.use(multer())
 app.use(cookieParser())
 app.use('/ServiceWorker.js', express.static(path.join(process.cwd(), 'build/assets/js/sw/ServiceWorker.js')))
 app.use('/assets', express.static(path.join(process.cwd(), 'bower_components')))
 app.use('/assets', express.static(path.join(process.cwd(), 'build/assets')))
+app.get('/favicon.ico', (req, res) -> res.redirect(301, '/assets/images/favicon.ico'))
 app.use('/connect', connect)
-# app.use(
-#   (req, res, next) ->
-#     if !req.cookies.strava_access_token
-#       res.redirect("/connect?redirect=#{encodeURIComponent(req.originalUrl)}")
-#     else
-#       next()
-# )
+app.use(
+  (req, res, next) ->
+    if !req.cookies.strava_access_token
+      res.redirect("/connect?redirect=#{encodeURIComponent(req.originalUrl)}")
+    else
+      next()
+)
 app.use('/record', record)
 app.use('/strava', strava)
 

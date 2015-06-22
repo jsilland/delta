@@ -6,5 +6,8 @@ StravaOrientationLock = Polymer({
 
 	ready: ->
     if screen.orientation && screen.orientation.lock
-      screen.orientation.lock(@orientation)
+      screen.orientation.lock(@orientation).catch(
+          (e) ->
+            console.log("Failed to lock screen orientation: #{e}")
+      )
 })

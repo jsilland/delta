@@ -4,7 +4,7 @@ Chrome will soon run Android apps, and web apps are becoming richer – there's 
 This effort is especially sponsored by Google, as part of the Blink rendering engine, but also by Mozilla and Microsoft. Apple's lagging behind – they don't care much.
 
 Web Components & Polymer
-  - lets you create valid, custom HTML elements, e.g. <strava-activity>, <strava-record-button>
+  - lets you create valid, custom HTML elements, e.g. <strava-activity>, <strava-record-button> — they are imported into the main documents through HTML imports
   - Each element maps to an instance of a JavaScript class, i.e. <strava-record-button> <-> StravaRecordButton
   - Attributes maps to object properties, i.e <strava-segment id="12345"> -> StravaSegment.id = 12345
   - Lifecycle callbacks: created, ready, attached, detached:
@@ -35,9 +35,10 @@ Geo Location API
     )
 
 Bluetooth API
-  - Unfortunately didn't get to it to work with an HRM
+  - Unfortunately still at the specification stage but about to be implemented in Chrome
 
 Wake Lock API
+  - Lets
 
 Screen orientation API
   screen.orientation.lock('portrait-primary')

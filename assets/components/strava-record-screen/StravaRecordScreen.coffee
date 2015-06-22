@@ -142,20 +142,21 @@ StravaRecordScreen = Polymer({
     lastTwoPositions = @buffer.slice(-2)
     @distance += @distanceBetween(lastTwoPositions[0].coords, lastTwoPositions[1].coords)
 
+  EARTH_RADIUS: 6371
+
   distanceBetween: (first, second) ->
-    earthRadius = 6371
     latitudeDifference = @toRadians(second.latitude - first.latitude)
     longitudeDifference = @toRadians(second.longitude - first.longitude) 
     a = Math.sin(latitudeDifference / 2) * Math.sin(latitudeDifference / 2) +
         Math.cos(@toRadians(first.latitude)) * Math.cos(@toRadians(second.latitude)) * 
         Math.sin(longitudeDifference / 2) * Math.sin(longitudeDifference / 2)
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-    earthRadius * c
+    @EARTH_RADIUS * c
   
   toRadians: (degrees) ->
     degrees * (Math.PI / 180)
 
-  MINIMAL_REQUIRED_ACCURACY: 25
+  MINIMAL_REQUIRED_ACCURACY: 5
 
   updateReadyToRecord: ->
     if !@recording && @buffer.length >= 4

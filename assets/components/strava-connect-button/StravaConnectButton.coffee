@@ -15,5 +15,5 @@ StravaConnectButton = Polymer({
   authenticate: ->
     exchangeUrl = encodeURIComponent("#{@host}/connect/exchange")
     redirectTo = encodeURIComponent(@redirect)
-    window.location = "https://www.strava.com/oauth/authorize?approval_prompt=force&client_id=#{@clientid}&redirect_uri=#{exchangeUrl}&scope=view_private&response_type=code&state=#{redirectTo}"
+    window.location = "https://www.strava.com/oauth/authorize?approval_prompt=force&client_id=#{@clientid}&redirect_uri=#{exchangeUrl}&scope=view_private,write&response_type=code&state=#{redirectTo}"
 })

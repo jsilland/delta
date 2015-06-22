@@ -1,7 +1,6 @@
 CACHE_NAME = 'peregrine-v1'
 
 self.addEventListener('fetch', (event) ->
-  debugger
   event.respondWith(
     caches.match(event.request)
       .then( (response) ->
