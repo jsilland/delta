@@ -1,0 +1,25 @@
+<dom-module id="strava-record-photo-button">
+  <style>
+    #photo-button {
+      background: transparent;
+      width: 150px;
+      height: 150px;
+    }
+  
+    #camera-image {
+      width: 120px;
+    }
+    
+    input[type="file"] {
+      visibility: hidden;
+    }
+  </style>
+  <template>
+    <input type="file" id="file-selector" accept="image/*" multiple>
+    <button id="photo-button" class="pure-button button-xlarge button-strava-photo">
+      <img id="camera-image" src="/assets/images/photo/camera.svg">
+    </button>
+  </template>
+</dom-module>
+
+<script src="PhotoButton.js"></script>

@@ -1,11 +1,11 @@
 extends layout
 
 block head
-  link(rel='import' href='/assets/components/strava-connect-button/strava-connect-button.html')
-  link(rel='import' href='/assets/components/strava-full-screen-view/strava-full-screen-view.html')
-  link(rel='import' href='/assets/components/strava-splash/strava-splash.html')
+  link(rel='import' href='/assets/components/common/full-screen-view/full-screen-view.html')
+  link(rel='import' href='/assets/components/connect/connect-button/connect-button.html')
+  link(rel='import' href='/assets/components/connect/splash-screen/splash-screen.html')
 
 block content
   strava-full-screen-view
-    strava-splash(photos=photos)
+    strava-splash-screen(photos=photos)
       strava-connect-button(clientid=clientId host=host redirect=redirect style="position: absolute; top: 70%; left: calc(50% - 250px);")

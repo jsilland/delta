@@ -1,0 +1,100 @@
+<link rel='import' href='../distance-label/distance-label.html'>
+<link rel='import' href='../finish-button/finish-button.html'>
+<link rel='import' href='../../common/full-screen-view/full-screen-view.html'>
+<link rel='import' href='../lap-button/lap-button.html'>
+<link rel='import' href='../photo-button/photo-button.html'>
+<link rel='import' href='../record-button/record-button.html'>
+<link rel='import' href='../speed-label/speed-label.html'>
+<link rel='import' href='../time-label/time-label.html'>
+<link rel='import' href='/assets/google-map/google-map.html'>
+
+<dom-module id="strava-record-screen">
+  <style>
+    google-map {
+      height: calc(100% - 650px);
+    }
+    
+    strava-record-finish-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      left: 20px;
+      height: 70px;
+    }
+    
+    #record {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      min-height: 650px;
+    }
+    
+    ul#metric-labels {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul#metric-labels li {
+      display: inline;
+      float: left;
+    }
+    
+    li#time-label {
+      width: 100%;
+    }
+    
+    li#speed-label, li#distance-label {
+      width: 50%;
+    }
+    
+    strava-record-lap-button {
+      position: absolute;
+      bottom: 50px;
+      left: 25px;
+    }
+    
+    strava-record-button {
+      position: absolute;
+      left: calc(50% - 100px);
+      bottom: 50px;
+      z-index: 2;
+    }
+    
+    strava-record-photo-button {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+    }
+  </style>
+  <template>
+    <strava-full-screen-view>
+      <google-map
+          zoomable="false"
+          api-key="AIzaSyCmfR2XMO4sljkBUtkxrE3aizEn9AL39zw"
+          zoom='18'
+          disable-default-ui
+          additional-map-options="{{googleMapOptions}}">
+        <google-map-marker
+            draggable="false"
+            latitude="{{markerlatitude}}"
+            longitude="{{markerlongitude}}"
+            icon="/assets/images/record/map_marker.png">
+        </google-map-marker>
+      </google-map>
+      <strava-record-finish-button id="finish-button"></strava-record-finish-button>
+      <div id="record">
+        <ul id="metric-labels">
+          <li id="time-label"><strava-record-time-label elapsedtime="{{elapsedtime}}"></strava-record-time-label></li>
+          <li id="speed-label"><strava-record-speed-label speed="{{speed}}"></strava-record-speed-label></li>
+          <li id="distance-label"><strava-record-distance-label distance="{{distance}}"></strava-distance-label></li>
+        </ul>
+        <strava-record-lap-button enabled="{{recording}}" current-position="{{lastKnownPosition}}"></strava-record-lap-button>
+        <strava-record-button recording={{recording}} enabled="{{readytorecord}}"></strava-record-button>
+        <strava-record-photo-button id="take-picture">
+      </div>
+    </strava-full-screen-view>
+  </template>
+</dom-module>
+
+<script src="RecordScreen.js"></script>
