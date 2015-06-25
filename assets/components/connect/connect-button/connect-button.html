@@ -1,0 +1,29 @@
+<dom-module id="strava-connect-button">
+  <style>
+    .button-strava-connect {
+      color: white;
+      border: 8px solid white;
+      background: transparent;
+      width: 500px;
+    }
+    
+    #connect-button-label {
+      margin: .2em 0 .7em 0;
+      padding: 0;
+      letter-spacing: 5px;
+      font-size: 200%;
+    }
+    
+    #strava {
+      width: 400px;
+    }
+  </style>
+  <template>
+	  <button id="connect-button" type="button" class="pure-button button-xlarge button-strava-connect">
+	    <p id="connect-button-label">CONNECT WITH</p>
+      <img id="strava" src="/assets/images/strava.svg">
+		</button>
+  </template>
+</dom-module>
+
+<script src="ConnectButton.js"></script>
