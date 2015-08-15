@@ -19,6 +19,8 @@
     "material-design-icons": "~1.0.0",
     "google-map": "1.0.0",
     "pure": "~0.6.0",
-    "webcomponentsjs": "~0.7.2"
+    "webcomponentsjs": "~0.7.2",
+    "iron-ajax": "PolymerElements/iron-ajax#1.0.0",
+    "twitter-cldr-npm": "~1.5.0"
   }
 }

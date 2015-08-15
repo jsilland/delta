@@ -1,0 +1,8 @@
+extends layout
+block head
+    link(rel='import' href='/assets/components/common/full-screen-view/full-screen-view.html')
+    link(rel='import' href='/assets/components/activity/activity-view/activity-view.html')
+    link(rel='import' href='/assets/iron-ajax/iron-ajax.html')
+block content
+    strava-full-screen-view
+        strava-activity-view(google-maps-api-key=google_maps_api_key id=id)

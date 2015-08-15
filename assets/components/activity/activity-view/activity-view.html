@@ -1,0 +1,123 @@
+<link rel='import' href='/assets/google-map/google-map.html'>
+
+<dom-module id="strava-activity-view">
+    <style>
+        google-map {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .top {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.60);
+            font-weight: lighter;
+        }
+
+        .owner {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .title {
+            padding: 20px 20px 10px 20px;
+            font-size: 60px;
+            clear: both;
+        }
+
+        .profile {
+            font-size: 45px;
+            font-weight: bolder;
+            float: left;
+        }
+
+        .profile img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            vertical-align: bottom;
+            margin-right: 8px;
+        }
+
+        .date {
+            font-size: 25px;
+            font-weight: normal;
+            color: #666;
+            text-align: right;
+        }
+
+        .bottom {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            background-color: white;
+        }
+
+        .metrics {
+            font-size: 35px;
+        }
+
+        .social {
+            text-align: right;
+            font-size: 40px;
+            margin-top: 15px;
+            float: right;
+        }
+
+        .social img {
+            vertical-align: bottom;
+            margin-left: 8px;
+            margin-right: 15px;
+        }
+
+    </style>
+    <template>
+        <iron-ajax auto="true"
+                   url="{{activityUrl(id)}}"
+                   handle-as="json"
+                   last-response="{{activity}}"></iron-ajax>
+        <iron-ajax id="athlete-request"
+                   auto="false"
+                   handle-as="json"
+                   last-response="{{athlete}}"></iron-ajax>
+        <google-map
+                zoomable="false"
+                api-key="AIzaSyCmfR2XMO4sljkBUtkxrE3aizEn9AL39zw"
+                disable-default-ui
+                additional-map-options="{{googleMapOptions}}"
+                libraries='places,geometry'>
+        </google-map>
+        <div class="top">
+            <div class="owner">
+                <div class="profile">
+                    <img class="profile" src="[[athlete.profile]]">
+                    <span class="name">{{formatAthleteName(athlete)}}</span>
+                </div>
+                <div class="date">{{formatDate(activity.start_date_local)}}</div>
+            </div>
+            <div class="title">[[activity.name]]</div>
+        </div>
+        <div class="bottom">
+            <div class="metrics">
+                <div class="label">
+                    <div class="value">{{formatDistance(activity)}}</div>
+                    <div class="unit">km</div>
+                </div>
+                <div class="label">
+                    <div class="value">{{formatTime(activity)}}</div>
+                </div>
+            </div>
+            <div class="social">
+                <span>{{activity.kudos_count}}</span><img src="/assets/images/activity/kudos.svg"/>
+                <span>{{activity.comment_count}}</span><img src="/assets/images/activity/comment.svg"/>
+            </div>
+        </div>
+    </template>
+</dom-module>
+
+<script src="ActivityView.js"></script>

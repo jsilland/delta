@@ -8,6 +8,7 @@ multer = require('multer')
 connect = require('./routes/connect')
 record = require('./routes/record')
 strava = require('./routes/strava')
+activity = require('./routes/activity')
 
 app = express()
 
@@ -34,6 +35,7 @@ app.use(
 )
 app.use('/record', record)
 app.use('/strava', strava)
+app.use('/activities', activity)
 
 # catch 404 and forward to error handler
 app.use((req, res, next) ->
